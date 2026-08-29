@@ -2,11 +2,15 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 export default function RegioesChart({ denuncias }) {
-  const porRegiao = {};
-  (denuncias || []).forEach((d) => {
-    const regiao = d.bairro || d.cidade || 'Não informado';
-    porRegiao[regiao] = (porRegiao[regiao] || 0) + 1;
-  });
+const porRegiao = {};
+
+(denuncias || []).forEach((d) => {
+  const regiao = (d.bairro || d.cidade || 'Não informado')
+    .trim()
+    .replace(/\s+/g, ' ');
+
+  porRegiao[regiao] = (porRegiao[regiao] || 0) + 1;
+});
 
   const data = Object.entries(porRegiao)
     .map(([name, total]) => ({ name, total }))

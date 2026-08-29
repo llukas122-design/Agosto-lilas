@@ -2,10 +2,6 @@
 node_modules/
 **/node_modules/
 
-# Build
-dist/
-dist-ssr/
-
 # Variáveis de ambiente
 .env
 .env.*
@@ -19,6 +15,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Build
+dist/
+dist-ssr/
 
 # Arquivos locais
 *.local
