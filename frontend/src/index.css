@@ -1,0 +1,459 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+color: #30263d;
+background: #faf8fc;
+font-synthesis: none;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+--purple-950: #2e1747;
+--purple-900: #4c1d70;
+--purple-800: #5b2384;
+--purple-700: #6d28a9;
+--purple-600: #7c3aed;
+--purple-100: #f0e5fa;
+--purple-50: #faf6fd;
+--text: #3f354a;
+--muted: #766b80;
+--border: #eadff1;
+--shadow: 0 10px 30px rgba(72, 35, 95, 0.08);
+--shadow-lg: 0 18px 45px rgba(72, 35, 95, 0.13);
+}
+
+* {
+  box-sizing: border-box;
+  }
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+margin: 0;
+min-width: 320px;
+min-height: 100vh;
+background:
+radial-gradient(circle at 10% 0%, rgba(196, 135, 230, 0.12), transparent 30%),
+#faf8fc;
+color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+font-family: inherit;
+}
+
+button {
+cursor: pointer;
+}
+
+#root {
+width: 100%;
+max-width: none;
+min-height: 100vh;
+margin: 0;
+text-align: left;
+border: none;
+display: block;
+}
+
+/* ================================
+TIPOGRAFIA
+================================ */
+
+h1,
+h2,
+h3,
+p {
+margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+color: var(--purple-950);
+}
+
+h1 {
+font-family: 'Playfair Display', Georgia, serif;
+font-weight: 700;
+}
+
+p {
+line-height: 1.7;
+}
+
+/* ================================
+HERO
+================================ */
+
+header[class*="bg-purple-900"] {
+position: relative;
+overflow: hidden;
+background:
+radial-gradient(circle at 85% 20%, rgba(216, 180, 254, 0.25), transparent 25%),
+radial-gradient(circle at 15% 100%, rgba(167, 91, 211, 0.28), transparent 35%),
+linear-gradient(135deg, #35134f 0%, #542078 48%, #6d28a9 100%) !important;
+min-height: 510px;
+display: flex;
+align-items: center;
+}
+
+header[class*="bg-purple-900"]::before {
+content: "";
+position: absolute;
+width: 380px;
+height: 380px;
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 50%;
+right: -100px;
+top: -120px;
+}
+
+header[class*="bg-purple-900"]::after {
+content: "";
+position: absolute;
+width: 240px;
+height: 240px;
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 50%;
+right: 60px;
+bottom: -140px;
+}
+
+header[class*="bg-purple-900"] > div {
+position: relative;
+z-index: 2;
+width: 100%;
+max-width: 1180px;
+margin: auto;
+padding: 90px 28px !important;
+}
+
+header[class*="bg-purple-900"] h1 {
+color: white !important;
+font-size: clamp(3.2rem, 7vw, 5.8rem) !important;
+line-height: 1;
+letter-spacing: -2px;
+margin: 10px 0 20px;
+text-shadow: 0 5px 25px rgba(0,0,0,0.18);
+}
+
+header[class*="bg-purple-900"] p {
+color: rgba(255,255,255,0.88) !important;
+max-width: 650px !important;
+font-size: 1.15rem !important;
+}
+
+header[class*="bg-purple-900"] a {
+text-decoration: none;
+transition: all 0.25s ease;
+}
+
+header[class*="bg-purple-900"] a:first-child {
+box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+}
+
+header[class*="bg-purple-900"] a:first-child:hover {
+transform: translateY(-2px);
+box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+}
+
+header[class*="bg-purple-900"] a:nth-child(2):hover {
+transform: translateY(-2px);
+background: rgba(255,255,255,0.12);
+}
+
+header[class*="bg-purple-900"] .text-purple-200 {
+color: #e9d5ff !important;
+letter-spacing: 3px;
+}
+
+/* ================================
+SEÇÕES
+================================ */
+
+section {
+position: relative;
+}
+
+section#sobre {
+background: white;
+padding-top: 85px !important;
+padding-bottom: 85px !important;
+}
+
+section#sobre > div,
+section#denunciar > div,
+section#ajuda > div {
+max-width: 1180px !important;
+}
+
+/* ================================
+CARDS INFORMATIVOS
+================================ */
+
+section#sobre .grid > div {
+background: #fff !important;
+border: 1px solid var(--border) !important;
+border-radius: 20px !important;
+padding: 28px !important;
+box-shadow: 0 4px 18px rgba(72,35,95,0.045) !important;
+transition: transform .25s ease, box-shadow .25s ease;
+}
+
+section#sobre .grid > div:hover {
+transform: translateY(-5px);
+box-shadow: var(--shadow-lg) !important;
+}
+
+section#sobre .grid > div > div:first-child {
+background: linear-gradient(135deg, #f1e5fa, #e9d5ff) !important;
+}
+
+/* ================================
+ÁREA DE DENÚNCIA
+================================ */
+
+section#denunciar {
+background:
+linear-gradient(180deg, #faf7fd 0%, #ffffff 100%);
+padding-top: 80px !important;
+padding-bottom: 90px !important;
+}
+
+section#denunciar > div > div:first-child h2 {
+font-size: clamp(2rem, 4vw, 2.7rem);
+letter-spacing: -0.8px;
+}
+
+section#denunciar > div > p {
+color: var(--muted) !important;
+font-size: 1rem;
+}
+
+/* ================================
+FORMULÁRIO
+================================ */
+
+section#denunciar form {
+gap: 18px !important;
+}
+
+section#denunciar form input,
+section#denunciar form select,
+section#denunciar form textarea {
+width: 100%;
+border: 1px solid #ddd2e5 !important;
+background: #fff;
+color: #30263d;
+border-radius: 10px !important;
+padding: 12px 14px !important;
+font-size: 0.94rem;
+outline: none;
+transition: border .2s, box-shadow .2s;
+}
+
+section#denunciar form input:focus,
+section#denunciar form select:focus,
+section#denunciar form textarea:focus {
+border-color: #8b4bb5 !important;
+box-shadow: 0 0 0 4px rgba(124,58,237,0.10);
+}
+
+section#denunciar form textarea {
+min-height: 105px;
+resize: vertical;
+}
+
+section#denunciar form label {
+color: #4c1d70 !important;
+font-weight: 600 !important;
+}
+
+section#denunciar form button {
+border: none;
+border-radius: 11px !important;
+background: linear-gradient(135deg, #6d28a9, #7c3aed) !important;
+box-shadow: 0 8px 20px rgba(109,40,169,0.22);
+transition: all .25s ease;
+}
+
+section#denunciar form button:hover:not(:disabled) {
+transform: translateY(-2px);
+box-shadow: 0 12px 25px rgba(109,40,169,0.3);
+}
+
+section#denunciar form button:disabled {
+opacity: .7;
+cursor: not-allowed;
+}
+
+/* Card do formulário */
+section#denunciar form {
+background: white;
+}
+
+section#denunciar .shadow-xl {
+box-shadow: var(--shadow-lg) !important;
+border-color: var(--border) !important;
+}
+
+/* ================================
+MAPA
+================================ */
+
+.leaflet-container {
+font-family: 'Inter', sans-serif;
+z-index: 1;
+}
+
+section#denunciar .leaflet-container {
+min-height: 460px;
+}
+
+section#denunciar .rounded-2xl.overflow-hidden {
+box-shadow: var(--shadow-lg) !important;
+}
+
+/* ================================
+INDICADORES
+================================ */
+
+section#denunciar .grid.md:grid-cols-3 > div,
+section#denunciar .flex-1 {
+background: white !important;
+border: 1px solid var(--border) !important;
+border-radius: 18px !important;
+box-shadow: 0 5px 20px rgba(72,35,95,.05);
+transition: transform .2s ease;
+}
+
+section#denunciar .flex-1:hover {
+transform: translateY(-3px);
+}
+
+section#denunciar .flex-1 .text-3xl {
+color: var(--purple-700) !important;
+font-size: 2.1rem;
+}
+
+/* ================================
+GRÁFICO
+================================ */
+
+section#denunciar .recharts-responsive-container {
+background: white;
+border-radius: 18px;
+}
+
+section#denunciar .bg-white.rounded-2xl {
+box-shadow: var(--shadow) !important;
+}
+
+/* ================================
+CANAIS DE AJUDA
+================================ */
+
+section#ajuda {
+background:
+linear-gradient(135deg, #f7effb 0%, #fcf9fe 100%) !important;
+border-top: 1px solid #eee2f4;
+padding-top: 80px !important;
+padding-bottom: 80px !important;
+}
+
+section#ajuda .grid > div {
+background: white !important;
+border: 1px solid var(--border) !important;
+border-radius: 18px !important;
+padding: 25px !important;
+box-shadow: 0 5px 20px rgba(72,35,95,.05) !important;
+transition: all .25s ease;
+}
+
+section#ajuda .grid > div:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-lg) !important;
+}
+
+section#ajuda .grid > div > div:first-child {
+background: linear-gradient(135deg, #eee0f8, #e8d5f5) !important;
+}
+
+/* ================================
+FOOTER
+================================ */
+
+footer[class*="bg-purple-900"] {
+background: linear-gradient(135deg, #2e1747, #4c1d70) !important;
+border-top: 1px solid rgba(255,255,255,.08);
+padding: 35px 20px !important;
+}
+
+footer[class*="bg-purple-900"] p {
+color: rgba(255,255,255,.7) !important;
+}
+
+/* ================================
+TOAST
+================================ */
+
+div[role="status"] {
+font-family: 'Inter', sans-serif !important;
+}
+
+/* ================================
+RESPONSIVIDADE
+================================ */
+
+@media (max-width: 768px) {
+header[class*="bg-purple-900"] {
+min-height: 540px;
+}
+
+header[class*="bg-purple-900"] > div {
+padding: 70px 22px !important;
+}
+
+header[class*="bg-purple-900"] h1 {
+font-size: 3.4rem !important;
+}
+
+header[class*="bg-purple-900"] p {
+font-size: 1rem !important;
+}
+
+section#sobre,
+section#denunciar,
+section#ajuda {
+padding-top: 55px !important;
+padding-bottom: 55px !important;
+}
+
+section#denunciar .leaflet-container {
+min-height: 380px;
+}
+
+section#denunciar .grid {
+gap: 20px !important;
+}
+}
+
+@media (max-width: 480px) {
+header[class*="bg-purple-900"] h1 {
+font-size: 2.8rem !important;
+}
+
+header[class*="bg-purple-900"] a {
+width: 100%;
+text-align: center;
+}
+
+section#denunciar .leaflet-container {
+height: 380px !important;
+}
+}
