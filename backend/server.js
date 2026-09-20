@@ -51,6 +51,13 @@ app.post('/denuncias', (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.json({
+        status: 'online',
+        banco: 'conectado'
+    });
+});
+
 // Rota GET: Pega todas as denúncias do banco para mostrar no frontend (mapa/gráficos)
 app.get('/denuncias', (req, res) => {
     const sql = 'SELECT * FROM denuncias ORDER BY data_criacao DESC';
