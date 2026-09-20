@@ -15,12 +15,15 @@ const db = mysql.createPool({
     database: process.env.DB_NAME
 });
 
-db.connect((err) => {
+db.getConnection((err, connection) => {
     if (err) {
         console.error('Erro ao conectar ao banco de dados MySQL:', err);
         return;
     }
+
     console.log('Conexão com o banco de dados agosto_lilas estabelecida com sucesso!');
+
+    connection.release();
 });
 
 // --- NOVAS ROTAS AQUI ---
