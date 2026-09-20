@@ -12,7 +12,10 @@ const db = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 db.getConnection((err, connection) => {
@@ -53,12 +56,23 @@ app.get('/denuncias', (req, res) => {
 
     db.query(sql, (err, results) => {
         if (err) {
-            console.error('Erro ao buscar denúncias:', err);
+            console.error('ERRO MYSQL - GET /denuncias');
+            console.error('Mensagem:', err.message);
+            console.error('Código:', err.code);
+            console.error('Número:', err.errno);
+            console.error('SQL State:', err.sqlState);
+            console.error('Stack:', err.stack);
+
             return res.status(500).json({
                 erro: 'Erro ao buscar no banco de dados',
-                detalhe: err.message
+                mensagem: err.message || null,
+                codigo: err.code || null,
+                numero: err.errno || null,
+                sqlState: err.sqlState || null
             });
         }
+
+        console.log('GET /denuncias - registros encontrados:', results.length);
 
         res.json(results);
     });
