@@ -39,7 +39,7 @@ export default function DenunciaForm({ onRegistrada }) {
 
       // 2. Envia os dados e coordenadas para o SEU Backend (Node.js)
       const denunciaBody = { ...form, latitude: lat, longitude: lng };
-      const response = await fetch('http://localhost:3000/denuncias', {
+      const response = await fetch('https://agosto-lilas-production.up.railway.app/denuncias', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(denunciaBody)
