@@ -54,9 +54,13 @@ app.get('/denuncias', (req, res) => {
     db.query(sql, (err, results) => {
         if (err) {
             console.error('Erro ao buscar denúncias:', err);
-            return res.status(500).json({ erro: 'Erro ao buscar no banco de dados' });
+            return res.status(500).json({
+                erro: 'Erro ao buscar no banco de dados',
+                detalhe: err.message
+            });
         }
-        res.json(results); // Envia a lista de volta para o frontend
+
+        res.json(results);
     });
 });
 
