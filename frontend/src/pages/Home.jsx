@@ -16,7 +16,7 @@ export default function Home() {
   // Busca as denúncias cadastradas no SEU MySQL
   const carregar = useCallback(async () => {
     try {
-      const res = await fetch('http://localhost:3000/denuncias');
+      const res = await fetch('https://agosto-lilas-production.up.railway.app/denuncias');
       const data = await res.json();
       if (Array.isArray(data)) {
         setDenuncias(data);
