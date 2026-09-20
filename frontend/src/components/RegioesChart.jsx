@@ -5,11 +5,23 @@ export default function RegioesChart({ denuncias }) {
 const porRegiao = {};
 
 (denuncias || []).forEach((d) => {
-  const regiao = (d.bairro || d.cidade || 'Não informado')
+  const nomeOriginal = (d.bairro || d.cidade || 'Não informado')
     .trim()
     .replace(/\s+/g, ' ');
 
-  porRegiao[regiao] = (porRegiao[regiao] || 0) + 1;
+  const chave = nomeOriginal
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
+
+  if (!porRegiao[chave]) {
+    porRegiao[chave] = {
+      nome: nomeOriginal,
+      quantidade: 0,
+    };
+  }
+
+  porRegiao[chave].quantidade += 1;
 });
 
   const data = Object.entries(porRegiao)
