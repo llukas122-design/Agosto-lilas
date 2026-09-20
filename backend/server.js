@@ -70,7 +70,7 @@ app.post('/denuncias', (req, res) => {
 });
 
 app.get('/denuncias', (req, res) => {
-    const sql = 'SELECT * FROM denuncias ';
+    const sql = 'SELECT * FROM denuncias ORDER BY data_criacao DESC';
 
     db.query(sql, (err, results) => {
         if (err) {
