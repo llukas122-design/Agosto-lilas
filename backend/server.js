@@ -4,7 +4,10 @@ const mysql = require('mysql2');
 require('dotenv').config();
 
 const app = express();
-
+console.log('DB_HOST:', process.env.DB_HOST);
+console.log('DB_PORT:', process.env.DB_PORT);
+console.log('DB_NAME:', process.env.DB_NAME);
+console.log('MYSQL_URL existe:', !!process.env.MYSQL_URL);
 app.use(cors());
 app.use(express.json());
 
