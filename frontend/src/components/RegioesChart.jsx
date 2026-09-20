@@ -25,7 +25,7 @@ const porRegiao = {};
 });
 
   const data = Object.entries(porRegiao)
-    .map(([name, total]) => ({ name, total }))
+    .map(([, regiao]) => ({name: regiao.nome, total: regiao.quantidade,}))
     .sort((a, b) => b.total - a.total)
     .slice(0, 10);
 
@@ -45,8 +45,19 @@ const porRegiao = {};
           <CartesianGrid strokeDasharray="3 3" horizontal={false} />
           <XAxis type="number" allowDecimals={false} tick={{ fontSize: 12 }} />
           <YAxis type="category" dataKey="name" width={120} tick={{ fontSize: 12 }} />
-          <Tooltip cursor={{ fill: 'rgba(124,58,237,0.08)' }} contentStyle={{ borderRadius: 10, border: '1px solid #ede9fe' }} />
-          <Bar dataKey="total" fill="#7c3aed" radius={[0, 6, 6, 0]} />
+          <Tooltip
+            cursor={{ fill: 'rgba(124,58,237,0.08)' }}
+            contentStyle={{
+              borderRadius: 10,
+              border: '1px solid #ede9fe'
+            }}
+          />
+
+          <Bar
+            dataKey="total"
+            fill="#7c3aed"
+            radius={[0, 6, 6, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
