@@ -57,7 +57,7 @@ app.get('/denuncias', (req, res) => {
 
     db.query(sql, (err, results) => {
         if (err) {
-            console.error('ERRO MYSQL - GET /denuncias');
+            console.error('ERRO NO GET /denuncias');
             console.error('Mensagem:', err.message);
             console.error('Código:', err.code);
             console.error('Número:', err.errno);
@@ -73,8 +73,7 @@ app.get('/denuncias', (req, res) => {
             });
         }
 
-        console.log('GET /denuncias - registros encontrados:', results.length);
-
+        console.log('GET /denuncias funcionando. Registros:', results.length);
         res.json(results);
     });
 });
