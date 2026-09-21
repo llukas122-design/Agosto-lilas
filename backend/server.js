@@ -84,6 +84,22 @@ app.get('/denuncias', (req, res) => {
     });
 });
 
+app.get('/delegacias', (req, res) => {
+    const sql = 'SELECT * FROM delegacias';
+
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar delegacias:', err);
+
+            return res.status(500).json({
+                erro: 'Erro ao buscar delegacias'
+            });
+        }
+
+        res.json(results);
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
