@@ -14,25 +14,49 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   // Busca as denúncias cadastradas no SEU MySQL
-  const carregar = useCallback(async () => {
-    try {
-      const res = await fetch('https://agosto-lilas-production.up.railway.app/denuncias');
-      const data = await res.json();
-      if (Array.isArray(data)) {
-        setDenuncias(data);
-      }
-    } catch (e) {
-      console.error('Erro ao buscar denúncias no servidor', e);
-    } finally {
-      setLoading(false);
+ const carregar = useCallback(async () => {
+  try {
+    setLoading(true);
+
+    const res = await fetch(
+      'https://agosto-lilas-production.up.railway.app/denuncias'
+    );
+
+    if (!res.ok) {
+      throw new Error(`Erro HTTP: ${res.status}`);
     }
-  }, []);
+
+    const data = await res.json();
+
+    console.log('Denúncias recebidas:', data);
+
+    if (Array.isArray(data)) {
+      setDenuncias(data);
+    } else {
+      console.error('Resposta inesperada do servidor:', data);
+      setDenuncias([]);
+    }
+  } catch (e) {
+    console.error('Erro ao buscar denúncias no servidor:', e);
+    setDenuncias([]);
+  } finally {
+    setLoading(false);
+  }
+}, []);
 
   useEffect(() => { carregar(); }, [carregar]);
 
-  const total = denuncias.length;
-  const geoloc = denuncias.filter((d) => d.latitude && d.longitude).length;
-  const tiposUnicos = new Set(denuncias.map((d) => d.tipo_agressao)).size;
+ const total = denuncias.length;
+
+const geoloc = denuncias.filter(
+  (d) => d.latitude != null && d.longitude != null
+).length;
+
+const tiposUnicos = new Set(
+  denuncias
+    .map((d) => d.tipo_agressao)
+    .filter(Boolean)
+).size;
 
   return (
     <div className="min-h-screen bg-white">
@@ -86,9 +110,9 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-4 mb-8" style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
-            <Stat label="Denúncias registradas" value={loading ? '…' : total} />
-            <Stat label="Geolocalizadas" value={loading ? '…' : geoloc} />
-            <Stat label="Tipos mapeados" value={loading ? '…' : tiposUnicos} />
+            <Stat label="Denúncias registradas" value={total} />
+            <Stat label="Geolocalizadas" value={geoloc} />
+            <Stat label="Tipos mapeados" value={tiposUnicos} />
           </div>
 
           <div className="flex items-center gap-2 mb-3">
