@@ -25,9 +25,7 @@ export default function DenunciaForm({ onRegistrada }) {
       // 1. Busca as coordenadas usando o Nominatim (OpenStreetMap)
       let lat = null;
       let lng = null;
-      const q = [form.rua, form.bairro, form.cidade, 'Brasil'].filter(Boolean).join(', ');
-      const geoUrl = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q);
-      
+      const q = [form.rua, form.bairro, form.cidade, 'SP', 'Brasil'].filter(Boolean).join(', ');      const geoUrl = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&q=' + encodeURIComponent(q);
       const geoRes = await fetch(geoUrl, { headers: { 'Accept-Language': 'pt-BR' } });
       if (geoRes.ok) {
         const geoData = await geoRes.json();
