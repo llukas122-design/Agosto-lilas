@@ -18,13 +18,13 @@ const db = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
-db.connect((err) => {
+db.getConnection((err, connection) => {
     if (err) {
-        console.error('Erro ao conectar ao banco de dados MySQL:', err);
+        console.error('Erro ao conectar ao banco de dados:', err);
         return;
     }
-
-    console.log('Conexão com o banco de dados agosto_lilas estabelecida com sucesso!');
+    console.log('Conexão com o pool do banco de dados estabelecida com sucesso!');
+    connection.release(); // É importante liberar a conexão de volta para o pool
 });
 
 app.post('/denuncias', (req, res) => {
